@@ -1,0 +1,33 @@
+{
+  "name": "nova-modelling-agency-backend",
+  "version": "1.0.0",
+  "description": "Nova Modelling Agency Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajdelgados/nova-modelling-agency.git"
+  },
+  "keywords": [
+    "Nova",
+    "Model",
+    "Agency",
+    "Backend"
+  ],
+  "author": "Arturo J. Delgado S.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajdelgados/nova-modelling-agency/issues"
+  },
+  "homepage": "https://github.com/ajdelgados/nova-modelling-agency#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.23"
+  }
+}
