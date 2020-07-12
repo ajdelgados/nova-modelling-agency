@@ -1,0 +1,214 @@
+/* Global Style */
+*{
+    font-family: Gilroy-Regular;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+}
+/*All headers*/
+#section-headers{
+    font-family: Gilroy-Bold;
+    font-size: 48px;
+}
+/*NAVBAR*/
+
+.navbar-brand{
+    margin-left: 50px;
+    font-family: Gilroy-Bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    width: 58px;
+    height: 30px;   
+
+}
+.nav-sticky{
+    background-color: #FF9AB4;
+}
+@media (max-width: 768px){
+    .navbar-brand{
+        margin-left: 10px;
+    }
+    #nav-icons{
+    
+        position: absolute;
+        left: 10px;
+    }
+    .head-image{
+        display: none;
+        
+    }
+    .nav-item{
+        margin-left: 2px;
+       padding-left: 2px;
+}
+.navbar{
+    background-color: #FF9AB4;
+}
+.company-image{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 10px
+}
+.welcome-circle{
+    display: none;
+  
+}
+.welcome>.container>.row>.col-lg-10>.welcome-text{
+    font-size: 36px;
+    line-height: 28px;
+    font-family: Gilroy-Bold;
+}
+.Professionally-ellipse{
+    display: none;
+}
+.model3{
+    background: url(../images/Rectangle\ 39.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -30px;
+    width: 420px;
+    height: 463px;
+    position: absolute;
+}
+.featured-model>.second-featured-model-row{
+    display: none !important
+}
+
+}
+
+/*Media querie ends*/
+
+.nav-item{
+    margin-left: 20px;
+   padding-left: 50px;
+    font-size: 18px;
+    line-height: 21px;  
+    justify-content: space-between;
+    height: 30px;
+    color: #000000;
+    
+}
+#nav-icons{
+    
+    position: relative;
+    justify-content: right;
+    left: 450px;
+    padding-left: 30px;
+    padding-right: 20px;
+
+   
+}
+/*Header*/
+#header-content{
+    font-family: Gilroy-Bold;
+    font-size: 72px;
+    line-height: 84px;
+
+}
+#itallized{
+    font-style: italic;
+    color: #FF9AB4;
+    font-family: Gilroy-Bold;
+    font-size: 72px;
+    line-height: 84px;
+}
+.header{
+    top: 190px;
+    margin-top: 100px;
+}
+.button{
+    padding: 19px 59px;
+    width: 189px;
+    height: 60px;
+    background: #FFC0D0;
+    margin-top: 20px;
+}
+.compaines{
+    list-style: none;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+}
+.company-image{
+    width: 100px;
+    height: 42px;
+}
+
+/*Welcome to Nova*/
+.welcome{
+    background-color: #FFEEF2;
+}
+.welcome-text{
+    font-family: Gilroy-Bold;
+font-size: 48px;
+line-height: 28px;
+justify-content: center;
+left: 800px;
+}
+
+/*Professional model*/
+.prof-models{
+background: #FFFFC4;
+height:  600px;
+
+}
+/* 
+.model3{
+    background: url(../images/Rectangle\ 39.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -30px;
+    width: 420px;
+    height: 463px;
+    position: absolute;
+    left: 300px
+} */
+
+/*Commersial Shot*/
+.commercial-first-column{
+    background: #91FFDE;
+    height: 500px
+}
+
+/*Email Us*/
+.email-us{
+    background-color: #FFEAEF;
+    height: 580px;
+}
+.emailButton{
+    width: 161px;
+height: 60px;
+background: #FFC0D0;
+border: none;
+}
+.emailButton:focus{
+    border: none;
+    outline: none;
+}
+
+/*Footer*/
+.footer{
+    background-color:#242424;
+    height: 487px;
+}
+/* .footer-icons{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} */
+.footer-icons2{
+    list-style: none;
+    color: white;
+}
+.footer-icons2>li{
+    color: white;
+}
+.footer-logo{
+    font-family: Gilroy-Bold;
+font-size: 40px;
+line-height: 40px;
+width: 86px;
+height: 40px;
+}
