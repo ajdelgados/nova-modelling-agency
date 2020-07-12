@@ -13,11 +13,15 @@ app.use(cors());
 
 //Controllers
 const healthController = require("./controllers/health.controller")
+const modelRequestController = require("./controllers/model_request.controller")
 const userController = require("./controllers/user.controller")
 const signController = require("./controllers/sign.controller")
 
 //HTTP Methods
 app.get("/health", healthController.health)
+
+app.post("/model-request", modelRequestController.validate("body"), bodyValidator, modelRequestController.modelRequest)
+app.get("/model-request", auth, modelRequestController.getAll)
 
 app.post("/user", auth, userController.validate("create"), bodyValidator, userController.create)
 app.get("/user/:userId", auth, userController.getById)
