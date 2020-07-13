@@ -1,1 +1,0 @@
-Nova Modelling Agency
