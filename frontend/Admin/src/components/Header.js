@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { FindUsers } from '../services/dashboard';
 
 import './Header.css';
 
 const Header = () =>{
+
+	const [users, setUsers] = useState()
+
+	useEffect(() => {
+		FindUsers().then (res=>{
+			console.log(res)
+			setUsers(res.data.data.users)
+		})
+	}, []);
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg bg-light ">
