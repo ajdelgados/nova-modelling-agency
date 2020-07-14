@@ -1,8 +1,64 @@
-import React from 'react';
+import React, {useState} from 'react';
+import history from '../../history';
+import { Link } from 'react-router-dom';
 
 import '../../styles/login.css';
+import { SignIn} from '../../services/dashboard';
 
-const Login = ()=>{
+
+
+
+const Login = (props)=>{
+	const [state , setState] = useState({
+        email : "",
+        password : "",
+        successMessage: null,
+        fieldErrors: null
+    })
+
+    const handleChange = (e) => {
+        const {id , value} = e.target   
+        setState(prevState => ({
+            ...prevState,
+            [id] : value
+        }))
+    }
+
+    const handleSubmitClick = (e) => {
+        e.preventDefault();
+        if(state.email.length && state.password.length ) {
+            DetailsFromServer();
+        } else {
+           state.fieldErrors = "Enter Email and Password"
+        }
+    }
+
+   const DetailsFromServer = () => {
+		const payload={
+                "email":state.email,
+                "password":state.password,
+            }
+        SignIn(payload)
+   		.then (res=>{
+   			console.log(res)
+			if(res.status === 200){
+                setState(prevState => ({
+                    ...prevState,
+                    'successMessage' : res.data.message
+                }))
+               history.push('/dashboard')
+            } else {
+            	setState(prevState => ({
+                    ...prevState,
+                    'fieldErrors' : res.data.message
+                }))
+            }
+   		})
+   		.catch (err=>{
+   			state.fieldErrors = "Email and Password Mismatch!"
+   		})
+   	}
+
 	return(
 			<div className="text-center main-div row">
 				<div className="col-md-12 bg-white rounded border border-light">
@@ -13,23 +69,49 @@ const Login = ()=>{
 								<div className="main-login-form">
 									<div className="login-group">
 										<div className="form-group">
-											<label for="lg_username" className="sr-only">Username</label>
-											<input type="text" className="form-control" id="lg_username" name="lg_username" placeholder="Username" />
+											<label htmlFor="email" className="sr-only">
+											email
+											</label>
+											<input type="text" 
+											className="form-control" id="email"
+											 name="email"
+											  placeholder="Email" 
+											  value = {state.email}
+											  onChange = {handleChange}
+											 
+											  />
 										</div>
 										<div className="form-group">
-											<label for="lg_password" className="sr-only">Password</label>
-											<input type="password" className="form-control" id="lg_password" name="lg_password" placeholder="Password" />
-										</div>
-										<div className="form-group login-group-checkbox">
-											<input type="checkbox" id="lg_remember" name="lg_remember" />
-											<label for="lg_remember">Remember</label>
+											<label htmlFor="password"
+											 className="sr-only">Password
+											 </label>
+											<input type="password" 
+											className="form-control" 
+											id="password" 
+											name="password" 
+											placeholder="Password"
+											value = {state.password}
+											onChange = {handleChange}
+											autoComplete="off"
+											 />
 										</div>
 									</div>
-									<button type="submit" className="login-button"><i className="fa fa-chevron-right"></i></button>
+									<button 
+									type="submit"
+									 className="login-button"
+									  onClick={handleSubmitClick}
+									 >
+									<i className="fa fa-chevron-right"></i>
+									</button>
 								</div>
+								<div className="alert alert-success mt-2" style={{display: state.successMessage ? 'block' : 'none' }} role="alert">
+					                {state.successMessage}
+					            </div>
+					            <div className="alert alert-danger mt-2" style={{display: state.fieldErrors ? 'block' : 'none' }} role="alert">
+					                {state.fieldErrors}
+					            </div>
 								<div className="etc-login-form">
-									<p>Forgot your password? <a href="#!">click here</a></p>
-									<p>New user? <a href="#!">create new account</a></p>
+									<p>New user? <Link to="/register" href="#!">Create a new account</Link></p>
 								</div>
 							</form>
 						</div>

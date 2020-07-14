@@ -3,18 +3,20 @@ import {Router, Route, Switch} from 'react-router-dom';
 
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Header from './Header';
 
 import history from '../history';
 
 const App = ()=>{
 	return (
-		<div className="container pt-3">
+		<div className="container pt-3 px-5">
 		<Router history={history}>
 		 <div>
-		  <Header />
 		  <Switch>
 		  <Route path="/" exact component={Login}  />
+		  <Route path="/register" exact component={Register}  />
+		  <Header />
 		  <Route path="/dashboard" exact component={Dashboard}  />
 		  </Switch>
 		 </div>
