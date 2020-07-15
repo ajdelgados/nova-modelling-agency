@@ -61,7 +61,7 @@ const Login = (props)=>{
 
 	return(
 			<div className="text-center main-div row">
-				<div className="col-md-12 bg-white rounded border border-light">
+				<div className="col-md-12 vh-95 bg-white rounded border border-light">
 					<div className="logo">LOGIN</div>
 						<div className="login-form-1">
 							<form id="login-form" className="text-left">
@@ -110,9 +110,6 @@ const Login = (props)=>{
 					            <div className="alert alert-danger mt-2" style={{display: state.fieldErrors ? 'block' : 'none' }} role="alert">
 					                {state.fieldErrors}
 					            </div>
-								<div className="etc-login-form">
-									<p>New user? <Link to="/register" href="#!">Create a new account</Link></p>
-								</div>
 							</form>
 						</div>
 					</div>
