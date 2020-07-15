@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FindUsers } from '../services/dashboard';
+import Logo from  '../assets/images/O.png'
 
 import './Header.css';
 
@@ -16,9 +17,12 @@ const Header = () =>{
 	}, []);
 	return (
 		<div>
-			<nav className="navbar navbar-expand-lg bg-light ">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light ">
 				<div className="container-fluid">
-		         <Link className="navbar-brand brand">Nova</Link>
+		         <Link className="navbar-brand brand">
+		         <span> <img src={ Logo } alt="logo" /> </span>       
+		         Nova
+		         </Link>
 
 				  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				    <span className="navbar-toggler-icon"></span>
@@ -32,7 +36,7 @@ const Header = () =>{
 				 	</ul>
 				 	<ul className="navbar-nav nav navbar-right">
 				 		<li className="nav-link">
-				      		<Link to="/" className="nav-link link">Logout </Link>
+				      		<Link to="/" className="nav-link link">Logout</Link>
 				      	</li>
 				 	</ul>
 				  </div>
