@@ -199,9 +199,9 @@
         <h2 id="section-headers">Do you want to be a super <span id="section-headers" style="font-style: italic; color: #FF9AB4;">model?</span></h2>
         <p>Uniquely communicate error-free platforms before functional meta-services. Monotonectally emerging platforms before low-risk high-yield growth strategiesred niches.</p>
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            <input id="email" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
         </div>
-        <button class="emailButton mt-3"> Send </button>
+        <button class="emailButton mt-3" onclick="send_email()"> Send </button>
     </div>
    
 </section>
@@ -246,10 +246,19 @@
         </div>
 </section>
 
+<style>
+input.invalid {
+  border: 2px solid red;
+}
+
+input.valid {
+  border: 2px solid black;
+}
+</style>
 <script>
     function filter_model() {
       // Declare variables
-      var input, filter, ul, li, a, i, txtValue;
+      var input, filter, a, i, txtValue;
       input = document.getElementById('filter_model');
       filter = input.value.toUpperCase();
       list = document.getElementById("list_models");
@@ -265,6 +274,27 @@
             models[i].style.display = "none";
         }
       }
+    }
+
+    function send_email() {
+        var email = document.getElementById('email').value
+        var expression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        if(expression.test(email.toLowerCase())) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 201) {
+                    document.getElementById('email').classList.remove("invalid")
+                    document.getElementById('email').classList.add("valid")
+                    alert("Email Send")
+                }
+            };
+            xhttp.open("POST", "https://nova-modelling-agency-backend.herokuapp.com/model-request", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.send(JSON.stringify({email: email.toLowerCase()}));
+        } else {
+            document.getElementById('email').classList.remove("valid")
+            document.getElementById('email').classList.add("invalid")
+        }
     }
     </script>
     </body>
