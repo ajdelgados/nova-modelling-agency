@@ -42,6 +42,7 @@ const Login = (props)=>{
    		.then (res=>{
    			console.log(res)
 			if(res.status === 200){
+				sessionStorage.setItem('api_token', res.data.api_token);
                 setState(prevState => ({
                     ...prevState,
                     'successMessage' : res.data.message
