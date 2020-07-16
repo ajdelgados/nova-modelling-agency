@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import history from '../../history';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import '../../styles/login.css';
 import { SignIn} from '../../services/dashboard';
@@ -40,7 +40,6 @@ const Login = (props)=>{
             }
         SignIn(payload)
    		.then (res=>{
-   			console.log(res)
 			if(res.status === 200){
 				sessionStorage.setItem('api_token', res.data.api_token);
                 setState(prevState => ({
