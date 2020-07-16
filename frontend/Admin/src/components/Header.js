@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FindUsers } from '../services/dashboard';
 import Logo from  '../assets/images/O.png'
 
 import '../styles/Header.css';
 
-const Header = () => {
-	const [users, setUsers] = useState()
-
-	useEffect(() => {
-		FindUsers().then (res=>{
-			console.log(res.data.data)
-			setUsers(res.data.data.users)
-		})
-	}, [])
-
+const Header = () =>{
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg navbar-light bg-light ">
 				<div className="container-fluid">
-		         <Link className="navbar-brand brand">
+		         <Link to="/" className="navbar-brand brand">
 		         <span> <img src={ Logo } alt="logo" /> </span>       
 		         Nova
 		         </Link>
@@ -35,13 +25,6 @@ const Header = () => {
 				      </li>
 				 	</ul>
 				 	<ul className="navbar-nav nav navbar-right">
-						{users && users.map(user => {
-								return (
-									<li key={user._id} className="nav-link">
-										{user.email}
-									</li>
-								)
-						})}
 				 		<li className="nav-link">
 				      		<Link to="/" className="nav-link link">Logout</Link>
 				      	</li>
@@ -50,7 +33,7 @@ const Header = () => {
 				</div>
 			</nav>
 		</div>
-	);
+		);
 }
 
 export default Header;
