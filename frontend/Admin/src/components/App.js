@@ -3,8 +3,6 @@ import {Router, Route, Switch} from 'react-router-dom';
 
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import Register from './pages/Register';
-import Header from './Header';
 
 import history from '../history';
 

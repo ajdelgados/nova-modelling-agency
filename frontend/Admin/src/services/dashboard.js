@@ -20,11 +20,3 @@ export const FindUsers = async () =>{
 		   throw err;
 	  }
 }
-
-export const SendDetailsToServer = async payload =>{
-		try{
-   			return await http.post('/signin', payload);
-   		} catch (err){
-   			throw err;
-  		}
-}

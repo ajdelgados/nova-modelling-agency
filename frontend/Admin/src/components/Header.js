@@ -1,21 +1,32 @@
-import React, {useState, useEffect} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FindUsers } from '../services/dashboard';
 import Logo from  '../assets/images/O.png'
 
-import './Header.css';
+import '../styles/Header.css';
 
-const Header = () =>{
+class Header extends Component{
 
-	const [users, setUsers] = useState()
-
-	useEffect(() => {
+	state = {
+		users: {}
+	}
+	
+	componentDidMount (){
 		FindUsers().then (res=>{
 			console.log(res)
-			setUsers(res.data.data.users)
+			this.setState({users: res.data.data.users})
 		})
-	}, []);
-	return (
+	}
+
+	display(data){
+		console.log(data.email)
+	}
+
+	render (){
+
+		console.log(this.state.users)
+
+		return (
 		<div>
 			<nav className="navbar navbar-expand-lg navbar-light bg-light ">
 				<div className="container-fluid">
@@ -36,6 +47,9 @@ const Header = () =>{
 				 	</ul>
 				 	<ul className="navbar-nav nav navbar-right">
 				 		<li className="nav-link">
+				      		{this.display(this.state.users)}
+				      	</li>
+				 		<li className="nav-link">
 				      		<Link to="/" className="nav-link link">Logout</Link>
 				      	</li>
 				 	</ul>
@@ -44,6 +58,8 @@ const Header = () =>{
 			</nav>
 		</div>
 		);
+	}
+
 }
 
 export default Header;
