@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import history from '../../history';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../../styles/login.css';
 import { SignIn} from '../../services/dashboard';
@@ -109,6 +109,9 @@ const Login = (props)=>{
 					            </div>
 					            <div className="alert alert-danger mt-2" style={{display: state.fieldErrors ? 'block' : 'none' }} role="alert">
 					                {state.fieldErrors}
+					            </div>
+					            <div>
+					            	<p>Don't have an account? <Link to="/register">Sign Up</Link></p>
 					            </div>
 							</form>
 						</div>

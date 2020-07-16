@@ -1,48 +1,78 @@
-import React from 'react';
+import React,  { useState, useEffect } from 'react';
 import {Table } from 'react-bootstrap';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
+import { FindUsers } from '../../services/dashboard';
 import Header from '../Header';
 import '../../styles/Dashboard.css';
 
 const Dashboard = ()=>{
-	 const header = ["S/NO", "Item", "Item", "Item", "Item"];
 
-	return(
-		<div className="container">
-			<Header />
-			<div className="card w-100 mt-3">
-			<h3 className="text-center text-uppercase pt-5 title">Dashboard</h3>
-        <div className="card-header d-flex justify-content-between">
-          <div className="d-flex align-items-center justify-content-between">
-            <h5 className="card-heading ml-3">
-             	Users
-            </h5>
-          </div>
+  const [users, setUsers] = useState()
+
+  useEffect(() => {
+    FindUsers().then (res=>{
+      // console.log(res.data.data)
+      setUsers(res.data.data.users)
+    })
+  }, [])
+
+   const header = ["S/NO", "Email", "User Role", "Joined"];
+
+  return(
+    <div className="container">
+      <Header />
+      <div className="card w-100 mt-3">
+        <div className="text-uppercase card-header d-flex justify-content-center pt-3">
+          <h4 className="text-center" style={{fontWeight: 'bold' }}>
+            Admin Dashboard
+          </h4>
         </div>
           <div className="card-body table-responsive">
             <Table>
-                <thead striped bordered hover>
-                    <tr>{header.map((h) => <th className="card-heading">{h}</th>)}</tr>
+                <thead>
+                    <tr>{header.map((h, i) => <th className="card-heading text-uppercase" key={i}>{h}</th>)}</tr>
                 </thead>
                 <tbody>
-
-                {
-                 <tr>
-                      <td>Test</td>
-                       <td>Test</td>
-                       <td>Test</td>
-                       <td>Test</td>
-                      <td>Test</td>
+                {users && users.map((user, i) => {
+                return (
+                <tr key={user._id}>
+                
+                      <td>
+                        <Link to="/dashboard/{user/_id}">
+                          {i+1}
+                         </Link> 
+                      </td>   
+                      <td>
+                        <Link to="/dashboard/{user/_id}">
+                          {user.email}
+                        </Link> 
+                      </td>  
+                      <td className="text-uppercase">
+                        <Link>
+                          {user.user_role}
+                        </Link>
+                      </td>
+                      <td>
+                        <Link>
+                            <time>
+                              <Moment format="D MMM YYYY" withTitle>
+                                {user.createdAt}
+                              </Moment>
+                            </time>
+                        </Link>
+                      </td>
                   </tr>
-                }
-
+                )
+              })}
                 </tbody>
             </Table>
 
           </div>
         </div>
-		</div>
-		)
+    </div>
+    )
 }
 
 export default Dashboard;

@@ -9,6 +9,18 @@ export const SignIn = async payload =>{
   		}
 }
 
+export const SignUp = async payload =>{
+		try{
+   			return await http.post('/user', payload, {
+   				headers: {
+					'x-access-token': sessionStorage.getItem('api_token')
+			  	}
+   			});
+   		} catch (err){
+   			throw err;
+  		}
+}
+
 export const FindUsers = async () =>{
 	try{
 		   return await http.get('/users', {
@@ -20,3 +32,20 @@ export const FindUsers = async () =>{
 		   throw err;
 	  }
 }
+
+export const FindUser = async (id) =>{
+	try{
+		   return await http.get('/user/' + id, {
+				headers: {
+					'x-access-token': sessionStorage.getItem('api_token')
+			  	}
+		   });
+	   } catch (err){
+		   throw err;
+	  }
+}
+
+
+
+
+
